@@ -13,6 +13,23 @@ const RewardSchema = new Schema({
 
 });
 
+RewardSchema.methods.biddedOnBy = function(user){
+  return this.bidders.some(bidderId => bidderId.equals(user._id));
+};
+
+RewardSchema.methods.registerWithCampaign = function(amount, cb){
+  const campaignId = this._campaign;
+  mongoose.model.Campaign.findByIdAndUpdate(campaignId, {
+    $inc: { totalPledged: amount, backerCount: 1 }
+    }, (err) => {
+    if (!err){
+      return cb();
+    } else {
+      return cb(err);
+    }
+  });
+};
+
 const Reward = mongoose.model('Reward', RewardSchema);
 
 module.exports = Reward;

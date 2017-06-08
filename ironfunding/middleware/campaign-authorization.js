@@ -3,6 +3,7 @@ const Campaign = require('../models/campaign.js');
 
 function authorizeCampaign(req, res, next){
   Campaign.findById(req.params.id, (err, campaign) => {
+    console.log("in findById de autorhizecampaign");
     // If there's an error, forward it
     if (err)      { return next(err); }
     // If there is no campaign, return a 404
@@ -18,6 +19,7 @@ function authorizeCampaign(req, res, next){
 
 function checkOwnership(req, res, next){
   console.log(req.params);
+  console.log(req.user);
   Campaign.findById(req.params.id, (err, campaign) => {
     if (err){ return next(err); }
     if (!campaign){return next(new Error('404')); }

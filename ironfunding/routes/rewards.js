@@ -2,12 +2,14 @@ const express                 = require('express');
 const moment                  = require('moment');
 const Campaign                = require('../models/campaign');
 const Reward                  = require('../models/reward');
-const { authorizeCampaign }   = require('../middleware/campaign-middleware');
+const { authorizeCampaign }   = require('../middleware/campaign-authorization');
 const router                  = express.Router();
 const ObjectId                = require('mongoose').Types.ObjectId;
+const {ensureLoggedIn}        = require('connect-ensure-login');
 
 router.get('/campaigns/:id/rewards/new', authorizeCampaign, (req, res, next) => {
   Campaign.findById(req.params.id, (err, campaign) => {
+    console.log("in busqueda de rewards/new");
     res.render('rewards/new', { campaign });
   });
 });
@@ -15,7 +17,10 @@ router.get('/campaigns/:id/rewards/new', authorizeCampaign, (req, res, next) => 
 router.get('/campaigns/:id/rewards', (req, res, next) => {
   Campaign
     .findById(req.params.id)
-    .populate('rewards')
+    .populate({
+      path: 'rewards',
+      match: { bidders: { $ne: req.user._id }}
+    })
     .exec(   (err, campaign) => {
       if (err || !campaign){ return next(new Error("404")); }
       res.render('rewards/index', { campaign });
@@ -49,6 +54,32 @@ router.post('/campaigns/:id/rewards', authorizeCampaign, (req, res, next) => {
         }
       });
     });
+  });
+});
+
+router.post('/rewards/:id/donate', ensureLoggedIn('/login'), (req, res, next) => {
+  Reward.findById(req.params.id, (err, reward) => {
+    if (reward && !reward.biddedOnBy(req.user)){
+      reward.bidders.push(req.user._id);
+
+      reward.save( (err) => {
+        if (err){
+          res.json(err);
+        } else {
+          // Increment the campaign's backerCount and totalPledged
+          // We have to add this function
+          reward.registerWithCampaign(reward.amount, (err) => {
+            if (err) { return res.json(err); }
+            return res.json(reward);
+
+          });
+        }
+      });
+
+    } else {
+      res.json("Already bidded on reward");
+    }
+
   });
 });
 

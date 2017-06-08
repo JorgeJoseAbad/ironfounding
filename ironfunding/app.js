@@ -14,7 +14,7 @@ const User               = require('./models/user');
 const bcrypt             = require('bcrypt');
 const moment             = require('moment');
 const campaignRoutes     = require('./routes/campaigns');
-//const rewardRoutes       = require('./routes/rewards');
+const rewardRoutes       = require('./routes/rewards');
 const index              = require('./routes/index');
 const authRoutes         = require('./routes/authentication.js');
 
@@ -128,7 +128,7 @@ app.use( (req, res, next) => {
 app.use('/', index);
 app.use('/', authRoutes);
 app.use('/campaigns', campaignRoutes);
-//app.use('/', rewardRoutes);
+app.use('/', rewardRoutes);
 
 //app.use('/', index);
 //app.use('/users', users);

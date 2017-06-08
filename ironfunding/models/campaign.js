@@ -15,6 +15,7 @@ const CampaignSchema = new Schema({
   backerCount   : { type: Number, default: 0 },
   totalPledged  : { type: Number, default: 0 },
   deadline      : { type: Date, required: true },
+  rewards       : [ { type: Schema.Types.ObjectId,  ref: 'Reward' } ]
 });
 
 CampaignSchema.virtual('timeRemaining').get(function () {
