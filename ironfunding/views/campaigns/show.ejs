@@ -37,9 +37,10 @@
       <a class="btn backer-btn" href="/campaigns/<%= campaign._id%>/rewards">Back This Project</a>
       <% if (campaignIsCurrentUsers) { %>
         <a class="btn backer-btn" href="/campaigns/<%= campaign._id%>/edit">Edit This Project</a>
+        <a class="btn btn-primary new-reward" href="/campaigns/<%= campaign._id%>/rewards/new">Create New Reward</a>
       <% } else { %>
-        <a class="btn backer-btn" href="#">Back This Project</a>
-      <% } %>
+        <a class="btn backer-btn" href="/campaigns/<%= campaign._id%>/rewards">Back This Project</a>
+        <% } %>
     </div>
   </div>
 </div>

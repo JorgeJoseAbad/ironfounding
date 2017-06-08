@@ -17,9 +17,10 @@ function authorizeCampaign(req, res, next){
 }
 
 function checkOwnership(req, res, next){
+  console.log(req.params);
   Campaign.findById(req.params.id, (err, campaign) => {
     if (err){ return next(err); }
-    if (!campaign){ return next(new Error('404')); }
+    if (!campaign){return next(new Error('404')); }
 
     if (campaign.belongsTo(req.user)){
       res.locals.campaignIsCurrentUsers = true;

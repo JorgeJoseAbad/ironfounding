@@ -152,3 +152,41 @@ progress {
 .campaign-description {
   padding-right: 275px;
 }
+
+.reward-wrapper {
+  background-color: #F8F9FD;
+  float: none;
+  margin: 0 auto;
+  border: 1px solid #e0e4fb;
+  margin-bottom: 10px;
+}
+
+.reward-wrapper h2 {
+  color: blue;
+  font-size: 1.3em;
+}
+
+.reward-wrapper h3 {
+  font-size: 1.0em;
+}
+
+.reward-success {
+  display: none;
+  font-size: 5em;
+  color: rgb(0,255,0);
+}
+
+.reward-donate-form input {
+  width: 60%;
+  display: inline;
+}
+
+.reward-donate-form button {
+  width: 30%;
+  display: inline;
+  padding: 7px;
+  background-color: #25CB68;
+  color: white;
+  box-shadow: none;
+  border: 0;
+}
