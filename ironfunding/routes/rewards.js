@@ -37,7 +37,8 @@ router.post('/campaigns/:id/rewards', authorizeCampaign, (req, res, next) => {
       description: req.body.description,
       amount     : req.body.amount,
       delivery   : req.body.delivery,
-      _campaign  : campaign._id
+      _campaign  : campaign._id,
+      bidders    : req.user //tentativo para incorporar bidders
     });
 
     reward.save( (err) => {
