@@ -1,10 +1,12 @@
 const express = require('express');
 const router  = express.Router();
 const passport  = require('passport');
-const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
+const {
+        ensureLoggedIn, ensureLoggedOut
+      } = require('connect-ensure-login');
 
 router.get('/login', ensureLoggedOut(), (req, res) => {
-    res.render('authentication/login');
+    res.render('authentication/login',{req});
 });
 
 router.post('/login', ensureLoggedOut(), passport.authenticate('local-login', {
@@ -13,7 +15,7 @@ router.post('/login', ensureLoggedOut(), passport.authenticate('local-login', {
 }));
 
 router.get('/signup', ensureLoggedOut(), (req, res) => {
-    res.render('authentication/signup');
+    res.render('authentication/signup',{req});
 });
 
 // routes/authentication.js

@@ -18,6 +18,7 @@ const rewardRoutes       = require('./routes/rewards');
 const index              = require('./routes/index');
 const authRoutes         = require('./routes/authentication.js');
 
+mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:27017/ironfunds-development');
 
 //var index = require('./routes/index');

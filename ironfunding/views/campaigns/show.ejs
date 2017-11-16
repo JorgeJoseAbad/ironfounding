@@ -1,4 +1,6 @@
 <!-- campaigns/show.ejs -->
+<h3>hello <%=user%></h3>
+<h2>This a campaign by: </h2>
 <div class="container campaign-container">
   <div class="row">
     <div class="col-sm-2">
@@ -34,7 +36,7 @@
         <strong class="large-strong"><%= campaign.timeRemaining.days %></strong><br>
         <span class="light-text"><%= campaign.timeRemaining.unit  %> to go.</span>
       </div>
-      
+
       <% if (campaignIsCurrentUsers) { %>
         <a class="btn backer-btn" href="/campaigns/<%= campaign._id%>/edit">Edit This Project</a>
         <a class="btn btn-primary new-reward" href="/campaigns/<%= campaign._id%>/rewards/new">Create New Reward</a>

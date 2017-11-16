@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
     .find({})
     .populate('_creator')
     .exec( (err, campaigns) => {
-        res.render('index', { campaigns });
+        res.render('index', { campaigns,req });
     });
 });
 
