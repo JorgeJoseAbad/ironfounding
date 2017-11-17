@@ -1,5 +1,6 @@
-<!-- views/rewards/index/ejs -->
-this is the page rewards/index.ejs
+<!-- views/rewards/index/ejs
+this is the page rewards/index.ejs-->
+<% if (campaign.rewards.length===0) {%>There is no rewards for this campaign<%}%>
 <div class="container">
   <div class="row">
     <% campaign.rewards.forEach((reward) => { %>

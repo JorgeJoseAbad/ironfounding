@@ -17,6 +17,8 @@
       <div class="campaign-info-wrapper">
         <a class="title" href="/campaigns/<%= campaign._id %>">
           <strong><%= campaign.title %></strong>
+          <br>
+          <i>Category: </i><b><%= campaign.category%></b>
         </a><br>
         by <span class="light-text"><%= campaign._creator.username %></span><br>
         <span class="light-text description"><%= campaign.description %></span>

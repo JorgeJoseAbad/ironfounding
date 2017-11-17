@@ -47,16 +47,31 @@ crossorigin="anonymous"></script>
                 <span class="glyphicon glyphicon-search"></span>
               </a>
             </li>
-            <li><a href="/login">Login</a></li>
-            <li><a href="/signup">Signup</a></li>
+            <li>
+              <form action="/login" method="GET">
+                <button class="btn btn-link btn-header" type="submit">Login</button>
+                <!--<a href="/login">Login</a>-->
+              </form>
+            </li>
+            <li>
+              <form action="/signup" method="GET">
+                <button class="btn btn-link btn-header" type="submit">Signup</button>
+                <!--<a href="/signup">Signup</a>-->
+              </form>
+            </li>
             <li>
               <form action="/logout" method="POST">
-                <button class="btn btn-link btn-logout" type="submit">Logout</a>
+                <button class="btn btn-link btn-header" type="submit">Logout</button>
               </form>
             </li>
             <% if (typeof(req.user) === "undefined") { %>
             <li><a href="#">Profile</a></li>
-            <%} else {%> <li><a href="#"><%=req.user.username%><li>
+            <%} else {%>   <li>
+                              <form action="#" method="get">
+                                <button class="btn btn-link btn-header" type="submit"><b>Hello! </b><%=req.user.username%></button>
+                                <!--<a href="#"><%=req.user.username%></a>-->
+                              </form>
+                          <li>
             <% } %>
           </ul>
         </div>
