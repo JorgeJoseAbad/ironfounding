@@ -2,7 +2,12 @@ const express  = require('express');
 const Campaign = require('../models/campaign');
 const TYPES    = require('../models/campaign-types');
 const router   = express.Router();
-const moment             = require('moment');
+const moment   = require('moment');
+
+// Route to upload from project base path
+const multer             = require('multer');
+const upload = multer({ dest: './public/uploads/' });
+
 const {
     ensureLoggedIn
   }  = require('connect-ensure-login');
@@ -59,7 +64,7 @@ router.get('/:id/edit', [ensureLoggedIn('/login'),authorizeCampaign], (req, res,
   Campaign.findById(req.params.id, (err, campaign) => {
     if (err)       { return next(err); }
     if (!campaign) { return next(new Error("404")); }
-    return res.render('campaigns/edit', { campaign, types: TYPES });
+    return res.render('campaigns/edit', { campaign, types: TYPES,req });
   });
 });
 
@@ -72,6 +77,30 @@ router.post('/:id', [ensureLoggedIn('/login'),authorizeCampaign], (req, res, nex
     deadline: req.body.deadline
   };
   Campaign.findByIdAndUpdate(req.params.id, updates, (err, campaign) => {
+    if (err)       { return res.render('campaigns/edit', { campaign, errors: campaign.errors }); }
+    if (!campaign) { return next(new Error("404")); }
+    return res.redirect(`/campaigns/${campaign._id}`);
+  });
+});
+
+
+router.get('/:id/image',[ensureLoggedIn('/login'),authorizeCampaign],(req,res,next)=>{
+console.log("En router.get id upload");
+  Campaign.findById(req.params.id, (err, campaign) => {
+    if (err)       { return next(err); }
+    if (!campaign) { return next(new Error("404")); }
+    return res.render('campaigns/image',{campaign, req});
+  });
+});
+
+
+router.post('/:id/image', upload.single('photo'), function(req, res){
+
+  const pic = new Campaign({
+    pic_path: `/uploads/${req.file.filename}`,
+  });
+
+  Campaign.findByIdAndUpdate(req.params.id,{pic_path:pic.pic_path},(err,campaign) => {
     if (err)       { return res.render('campaigns/edit', { campaign, errors: campaign.errors }); }
     if (!campaign) { return next(new Error("404")); }
     return res.redirect(`/campaigns/${campaign._id}`);

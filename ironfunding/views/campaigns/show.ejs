@@ -4,6 +4,7 @@
 <div class="container campaign-container">
   <div class="row">
     <div class="col-sm-2">
+
       <img src="https://ksr-ugc.imgix.net/assets/007/188/910/68df9ec3603e3f3138bed402dea3cab2_original.jpg?w=80&h=80&fit=crop&v=1466566705&auto=format&q=92&s=eff05acf65569368cc99f6363722fe60"><br>
       By: <strong><%= campaign._creator.username %></strong>
     </div>
@@ -15,7 +16,7 @@
   </div>
   <div class="row">
     <div class="col-sm-8">
-      <img class="campaign-image" src="<%= campaign.image %>">
+      <img class="campaign-image" src="<%= campaign.pic_path %>">
     </div>
     <div class="col-sm-4 campaign-info">
       <div class="campaign-progress">
@@ -39,6 +40,7 @@
 
       <% if (campaignIsCurrentUsers) { %>
         <a class="btn backer-btn" href="/campaigns/<%= campaign._id%>/edit">Edit This Project</a>
+        <a class="btn backer-btn" href="/campaigns/<%= campaign._id%>/image">Upload image</a>
         <a class="btn btn-primary new-reward" href="/campaigns/<%= campaign._id%>/rewards/new">Create New Reward</a>
       <% } else { %>
         <a class="btn backer-btn" href="/campaigns/<%= campaign._id%>/rewards">Back This Project</a>

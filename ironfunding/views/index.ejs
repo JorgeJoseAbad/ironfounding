@@ -13,7 +13,7 @@
   <h3 class="text-center">You may be interested in one of this campaigns...</h3>
   <% campaigns.forEach((campaign) => { %>
     <div class="col-sm-3 home-campaign-box">
-      <img src="<%= campaign.image %>">
+      <img src="<%= campaign.pic_path %>">
       <div class="campaign-info-wrapper">
         <a class="title" href="/campaigns/<%= campaign._id %>">
           <strong><%= campaign.title %></strong>

@@ -13,6 +13,9 @@ const LocalStrategy      = require('passport-local').Strategy;
 const User               = require('./models/user');
 const bcrypt             = require('bcrypt');
 const moment             = require('moment');
+
+const multer             = require('multer');
+
 const campaignRoutes     = require('./routes/campaigns');
 const rewardRoutes       = require('./routes/rewards');
 const index              = require('./routes/index');

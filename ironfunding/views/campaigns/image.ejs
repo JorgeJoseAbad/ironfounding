@@ -1,0 +1,8 @@
+<section>
+  <h2>Upload your photo</h2>
+  <form action="/campaigns/<%=campaign._id%>/image" method="post" enctype="multipart/form-data">
+    <label for="name" class="">Upload campaing image</label>
+    <input type="file" name="photo">
+    <input type="submit" value="Save">
+  </form>
+</section>

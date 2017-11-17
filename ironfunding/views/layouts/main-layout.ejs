@@ -56,7 +56,7 @@ crossorigin="anonymous"></script>
             </li>
             <% if (typeof(req.user) === "undefined") { %>
             <li><a href="#">Profile</a></li>
-            <%} else {%> <li><a href="#"><%=req.user.username%><li> 
+            <%} else {%> <li><a href="#"><%=req.user.username%><li>
             <% } %>
           </ul>
         </div>

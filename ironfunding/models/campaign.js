@@ -15,7 +15,12 @@ const CampaignSchema = new Schema({
   backerCount   : { type: Number, default: 0 },
   totalPledged  : { type: Number, default: 0 },
   deadline      : { type: Date, required: true },
-  rewards       : [ { type: Schema.Types.ObjectId,  ref: 'Reward' } ]
+  rewards       : [ { type: Schema.Types.ObjectId,  ref: 'Reward' } ],
+  pic_path: {
+    type: String,
+    default: "https://theeyetravels.com/wp-content/uploads/2014/12/Beethoven-3.jpg",
+    required: true
+  }//added to campaing model
 });
 
 CampaignSchema.virtual('timeRemaining').get(function () {
