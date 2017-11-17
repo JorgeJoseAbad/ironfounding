@@ -64,14 +64,22 @@ crossorigin="anonymous"></script>
                 <button class="btn btn-link btn-header" type="submit">Logout</button>
               </form>
             </li>
-            <% if (typeof(req.user) === "undefined") { %>
-            <li><a href="#">Profile</a></li>
-            <%} else {%>   <li>
-                              <form action="#" method="get">
+            <% if (typeof(req.user) !== "undefined") { %>
+
+
+                            <li>
+                              <div class="nav-image-profile" style="background-image:url('/<%=req.user.imgUrl%>')">
+                              </div>
+                            </li>
+                            <!--<li>
+                              <a href="/<%=req.user.username%>"><%=req.user.username%></a>
+                            </li>-->
+                            <li>
+                              <form action="/<%=req.user.username%>" method="get">
                                 <button class="btn btn-link btn-header" type="submit"><b>Hello! </b><%=req.user.username%></button>
                                 <!--<a href="#"><%=req.user.username%></a>-->
                               </form>
-                          <li>
+                            </li>
             <% } %>
           </ul>
         </div>

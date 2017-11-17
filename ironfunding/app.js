@@ -20,6 +20,7 @@ const campaignRoutes     = require('./routes/campaigns');
 const rewardRoutes       = require('./routes/rewards');
 const index              = require('./routes/index');
 const authRoutes         = require('./routes/authentication.js');
+const userRoutes          = require('./routes/users');
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:27017/ironfunds-development');
@@ -131,6 +132,7 @@ app.use( (req, res, next) => {
 
 app.use('/', index);
 app.use('/', authRoutes);
+app.use('/',userRoutes);
 app.use('/campaigns', campaignRoutes);
 app.use('/', rewardRoutes);
 
