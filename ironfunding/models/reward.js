@@ -18,13 +18,9 @@ RewardSchema.methods.biddedOnBy = function(user){
 };
 
 RewardSchema.methods.registerWithCampaign = function(amount, cb){
-  console.log("*****");
-  console.log(this);
-  console.log("--------");
-  console.log(this.title);
-  const campaignId = this._campaign; //do not work
-  console.log("in model reward "+campaignId);
-  Campaign.findByIdAndUpdate(campaignId, {amount}, {
+  const campaignId = this._campaign;
+
+  Campaign.findByIdAndUpdate(campaignId, {
     $inc: { totalPledged: amount, backerCount: 1 }
     }, (err) => {
     if (!err){
