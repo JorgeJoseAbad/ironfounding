@@ -20,9 +20,10 @@ const campaignRoutes     = require('./routes/campaigns');
 const rewardRoutes       = require('./routes/rewards');
 const index              = require('./routes/index');
 const authRoutes         = require('./routes/authentication.js');
-const userRoutes          = require('./routes/users');
+const userRoutes         = require('./routes/users');
 
 mongoose.Promise = global.Promise;
+//mongoose.Promise = require('bluebird');
 mongoose.connect('mongodb://localhost:27017/ironfunds-development');
 
 //var index = require('./routes/index');
@@ -81,7 +82,7 @@ passport.use('local-signup', new LocalStrategy(
                 return next(null, false);
             } else {
                 // Destructure the body
-                const { username, email, description, password } = req.body;
+                const { username, email, description, password, imgUrl} = req.body;
                 const hashPass = bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
                 const newUser = new User({
                   username,
@@ -130,9 +131,11 @@ app.use( (req, res, next) => {
 
 
 
-app.use('/', index);
+
 app.use('/', authRoutes);
-app.use('/',userRoutes);
+app.use('/', userRoutes);
+app.use('/', index);
+
 app.use('/campaigns', campaignRoutes);
 app.use('/', rewardRoutes);
 

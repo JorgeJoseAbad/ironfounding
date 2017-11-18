@@ -5,11 +5,22 @@ const multer = require('multer');
 let upload = multer({
   dest: './public/uploads/'
 });
-const {ensureLoggedIn}        = require('connect-ensure-login');
+const {ensureLoggedIn} = require('connect-ensure-login');
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+router.get('/listing', (req, res, next)=> {
+  console.log("router.get index");
+
+
+  User.find({},(err,users)=>{
+    console.log(users);
+    if (err) {console.log("Hay error");return next(err);}
+    return res.render('users/index',{
+      users,
+      req
+    });
+  });
+
 });
 
 

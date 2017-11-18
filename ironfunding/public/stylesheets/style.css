@@ -212,3 +212,16 @@ progress {
   box-shadow: none;
   border: 0;
 }
+
+.users-row {
+  background-color: #80808029;
+}
+
+.users{
+  background-color: #00b6ff24;
+}
+
+.listing-text{
+  font-size: 20px;
+  background-color: inherit;
+}
