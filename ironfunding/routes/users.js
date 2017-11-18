@@ -10,8 +10,6 @@ const {ensureLoggedIn} = require('connect-ensure-login');
 /* GET users listing. */
 router.get('/listing', (req, res, next)=> {
   console.log("router.get index");
-
-
   User.find({},(err,users)=>{
     console.log(users);
     if (err) {console.log("Hay error");return next(err);}
@@ -21,6 +19,30 @@ router.get('/listing', (req, res, next)=> {
     });
   });
 
+});
+
+router.get('/edit/:username', ensureLoggedIn('/login'), (req,res,next)=>{
+
+  User.findOne({username:req.params.username},(err,user)=>{
+
+    if (err) return next(err);
+    return res.render('users/edit',{
+      user,req
+    });
+  });
+});
+
+router.post('/edit/:id',ensureLoggedIn('/login'),(req,res,next)=>{
+  console.log("id a buscar: "+req.params.id);
+  const updates = {
+    email: req.body.email,
+    description: req.body.description,
+  };
+  User.findByIdAndUpdate(req.params.id,updates,(err,user)=>{
+    console.log(user);
+    if (err) {console.log("ERROR");return next(err);}
+    return res.redirect('/user');
+  });
 });
 
 
