@@ -96,9 +96,20 @@ nav.navbar {
   padding: 0;
 }
 
-.home-campaign-box img {
-  width: 100%;
-  height: 45%;
+.home-campaign-box-image{
+  max-width: 100%;
+  height: 50%;
+  border: 1px solid #d3d3d3;
+  background-color: #e3ecfa;
+
+}
+
+.home-campaign-box-image img {
+  display: block;
+  margin: auto;
+  max-width: 100%;
+  height: 100%;
+
 }
 
 .campaign-info-wrapper {
@@ -113,7 +124,7 @@ nav.navbar {
 
 .campaign-info-wrapper > .title {
   color: black;
-  font-size: 1.1em;
+  font-size: 1.4em;
 }
 
 .campaign-image {
@@ -217,8 +228,19 @@ progress {
   background-color: #80808029;
 }
 
-.users{
+.home-campaign-box-userimage{
+  max-width: 100%;
+  height: 50%;
+  border: 1px solid #d3d3d3;
   background-color: #00b6ff24;
+}
+
+.home-campaign-box-userimage img {
+  display: block;
+  margin: auto;
+  max-width: 100%;
+  height: 100%;
+
 }
 
 .listing-text{
