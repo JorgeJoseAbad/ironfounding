@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
@@ -22,12 +23,12 @@ const index              = require('./routes/index');
 const authRoutes         = require('./routes/authentication.js');
 const userRoutes         = require('./routes/users');
 
+
 mongoose.Promise = global.Promise;
 //mongoose.Promise = require('bluebird');
-mongoose.connect('mongodb://localhost:27017/ironfunds-development');
 
-//var index = require('./routes/index');
-//var users = require('./routes/users');
+mongoose.connect(process.env.MONGODB_URI);
+
 
 var app = express();
 

@@ -9,10 +9,9 @@ const {ensureLoggedIn} = require('connect-ensure-login');
 
 /* GET users listing. */
 router.get('/listing', (req, res, next)=> {
-  console.log("router.get index");
+
   User.find({},(err,users)=>{
-    console.log(users);
-    if (err) {console.log("Hay error");return next(err);}
+    if (err) {console.log("error");return next(err);}
     return res.render('users/index',{
       users,
       req
