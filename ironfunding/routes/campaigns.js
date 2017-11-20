@@ -55,7 +55,7 @@ router.get('/:id', checkOwnership, (req, res, next) => {
 
     campaign.populate('_creator', (err, campaign) => {
       if (err){ return next(err); }
-      return res.render('campaigns/show', { campaign,user:req.user.username,req });
+      return res.render('campaigns/show', { campaign,user:req.user,req });
     });
   });
 });
