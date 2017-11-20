@@ -1,6 +1,6 @@
 # Ironfounding:
 
-Guided project from Web Development Bootcamp, Ironhack. completed and improved.
+Guided project from Web Development Bootcamp, Ironhack. completed, corrected and improved.
 
 It is a clone of KICKSTARTER, with some basic functions and minimal CSS.
 
