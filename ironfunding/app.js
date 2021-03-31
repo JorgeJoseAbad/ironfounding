@@ -1,10 +1,10 @@
 require("dotenv").config();
-const express = require('express');
-const path = require('path');
-const favicon = require('serve-favicon');
-const logger = require('morgan');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
+const express            = require('express');
+const path               = require('path');
+const favicon            = require('serve-favicon');
+const logger             = require('morgan');
+const cookieParser       = require('cookie-parser');
+const bodyParser         = require('body-parser');
 const expressLayouts     = require('express-ejs-layouts');
 const mongoose           = require('mongoose');
 const passport           = require('passport');
@@ -27,7 +27,10 @@ const userRoutes         = require('./routes/users');
 mongoose.Promise = global.Promise;
 //mongoose.Promise = require('bluebird');
 
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect(process.env.MONGODB_URI,{
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  });
 
 
 var app = express();
@@ -55,18 +58,6 @@ app.use(session({
   store: new MongoStore( { mongooseConnection: mongoose.connection })
 }));
 
-
-
-passport.serializeUser((user, cb) => {
-  cb(null, user.id);
-});
-
-passport.deserializeUser((id, cb) => {
-  User.findById(id, (err, user) => {
-    if (err) { return cb(err); }
-    cb(null, user);
-  });
-});
 
 // Signing Up
 passport.use('local-signup', new LocalStrategy(
@@ -117,6 +108,17 @@ passport.use('local-login', new LocalStrategy((username, password, next) => {
   });
 }));
 
+passport.serializeUser((user, cb) => {
+  cb(null, user.id);
+});
+
+passport.deserializeUser((id, cb) => {
+  User.findById(id, (err, user) => {
+    if (err) { return cb(err); }
+    cb(null, user);
+  });
+});
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -129,8 +131,6 @@ app.use( (req, res, next) => {
   }
   next();
 });
-
-
 
 
 app.use('/', authRoutes);
