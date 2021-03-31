@@ -13,23 +13,25 @@
   </div>
 </div>
 
-<div class="campaign-row row">
-  <h3 class="text-center">You may be interested in one of this campaigns...</h3>
-  <% campaigns.forEach((campaign) => { %>
-    <div class="col-sm-3 home-campaign-box">
-      <div class="home-campaign-box-image">
-        <a href="/campaigns/<%= campaign._id %>">
-        <img src="<%= campaign.pic_path %>" alt="image campaign">
+<div class="container-fluid">
+  <div class="campaign-row row">
+    <h3 class="text-center">You may be interested in one of this campaigns...</h3>
+    <% campaigns.forEach((campaign) => { %>
+      <div class="col-sm-3 home-campaign-box">
+        <div class="home-campaign-box-image">
+          <a href="/campaigns/<%= campaign._id %>">
+          <img src="<%= campaign.pic_path %>" alt="image campaign">
+        </div>
+        <div class="campaign-info-wrapper">
+          <a class="title" href="/campaigns/<%= campaign._id %>">
+            <strong><%= campaign.title %></strong>
+            <br>
+            <i>Category: </i><b><%= campaign.category%></b>
+          </a><br>
+          by <span class="light-text"><%= campaign._creator.username %></span><br>
+          <span class="light-text description"><%= campaign.description %></span>
+        </div>
       </div>
-      <div class="campaign-info-wrapper">
-        <a class="title" href="/campaigns/<%= campaign._id %>">
-          <strong><%= campaign.title %></strong>
-          <br>
-          <i>Category: </i><b><%= campaign.category%></b>
-        </a><br>
-        by <span class="light-text"><%= campaign._creator.username %></span><br>
-        <span class="light-text description"><%= campaign.description %></span>
-      </div>
-    </div>
-  <%  }) %>
+    <%  }) %>
+  </div>
 </div>
