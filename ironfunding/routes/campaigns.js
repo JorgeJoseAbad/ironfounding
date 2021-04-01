@@ -95,10 +95,18 @@ console.log("En router.get id upload");
 
 
 router.post('/:id/image', upload.single('photo'), function(req, res){
+  debugger;
 
-  const pic = new Campaign({
-    pic_path: `/uploads/${req.file.filename}`,
-  });
+  let pic;
+  if (req.body.photoUrl != undefined && req.body.photoUrl !== ""){
+    pic = new Campaign({
+      pic_path: req.body.photoUrl
+    });
+  } else {
+    pic = new Campaign({
+      pic_path: `/uploads/${req.file.filename}`,
+    });
+  }
 
   Campaign.findByIdAndUpdate(req.params.id,{pic_path:pic.pic_path},(err,campaign) => {
     if (err)       { return res.render('campaigns/edit', { campaign, errors: campaign.errors }); }
