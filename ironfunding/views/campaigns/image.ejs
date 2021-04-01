@@ -1,16 +1,16 @@
 <section>
   <h2>Upload campaign image</h2>
   <form action="/campaigns/<%=campaign._id%>/image" method="post" enctype="multipart/form-data">
-    <div class="">
-      <p>You can load from your pc</p>
-      <label for="photo" class="">Upload campaing image</label>
+    <div class="form-group">
+      <label for="photo" class="">Upload campaing image from your images</label>
       <input type="file" name="photo">
+      <p class="help-block">From your images in your PC </p>
     </div>
-    <div class="">
-      <p>Or you can upload from outside</p>
-      <label  for="photoUrl">Upload campaing image url</label>
+    <div class="form-group">
+      <label  for="photoUrl">Upload campaing image from url</label>
       <input  type="url" name="photoUrl" id="photoUrl">
+      <p class="help-block">From a url </p>
     </div>
-    <input type="submit" value="Save">
+    <input type="submit" value="Save" class="btn btn-default">
   </form>
 </section>
