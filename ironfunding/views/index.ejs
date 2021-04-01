@@ -1,37 +1,44 @@
-
 <div class="container-fluid">
-  <div class="home-heading text-center row">
-    <div class="home-heading-wrapper">
-      <h1>Creators thrive here.</h1>
-      <p>Kickstarter creators pursue bold ideas on their own terms — and make an impact on the world, too.</p>
-      <!--<a class="btn btn-default" href="/users/index">Know the creators</a>-->
+  <div class="row">
+    <div class="home-heading text-center">
+      <div class="home-heading-wrapper">
+        <h1>Creators thrive here.</h1>
+        <p>Kickstarter creators pursue bold ideas on their own terms — and make an impact on the world, too.</p>
+        <!--<a class="btn btn-default" href="/users/index">Know the creators</a>-->
         <form action="/listing" method="get">
           <button class="btn btn-default" type="submit"><b>Know the creators</b></button>
         </form>
-
+      </div>
     </div>
   </div>
 </div>
 
 <div class="container-fluid">
-  <div class="campaign-row row">
-    <h3 class="text-center">You may be interested in one of this campaigns...</h3>
-    <% campaigns.forEach((campaign) => { %>
+  <div class="row">
+    <div class="campaign-row">
+      <h3 class="text-center">You may be interested in one of this campaigns...</h3>
+      </div>
+      <% campaigns.forEach((campaign) => { %>
       <div class="col-sm-3 home-campaign-box">
         <div class="home-campaign-box-image">
           <a href="/campaigns/<%= campaign._id %>">
-          <img src="<%= campaign.pic_path %>" alt="image campaign">
+            <img src="<%= campaign.pic_path %>" alt="image campaign">
         </div>
         <div class="campaign-info-wrapper">
           <a class="title" href="/campaigns/<%= campaign._id %>">
-            <strong><%= campaign.title %></strong>
+            <strong>
+              <%= campaign.title %></strong>
             <br>
-            <i>Category: </i><b><%= campaign.category%></b>
+            <i>Category: </i><b>
+              <%= campaign.category%></b>
           </a><br>
-          by <span class="light-text"><%= campaign._creator.username %></span><br>
-          <span class="light-text description"><%= campaign.description %></span>
+          by <span class="light-text">
+            <%= campaign._creator.username %></span><br>
+          <span class="light-text description">
+            <%= campaign.description %></span>
         </div>
       </div>
-    <%  }) %>
+      <%  }) %>
+
   </div>
 </div>

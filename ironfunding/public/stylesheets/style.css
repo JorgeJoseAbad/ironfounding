@@ -50,10 +50,8 @@ nav.navbar {
 }
 
 .nav-image-profile > img {
-  width: auto;
   display: inline;
   margin: 0 auto;
-  height: 100%;
 }
 
 
@@ -65,7 +63,7 @@ nav.navbar {
 
 .home-heading {
   background-color: #E3ECFA;
-  height: 75vh;
+  height: 45vh;
   padding: 0 30%;
   position: relative;
 }
@@ -78,7 +76,7 @@ nav.navbar {
   transform: translate(-50%, -50%);
 }
 .home-heading-wrapper > h1 {
-  font-size: 9rem;
+  font-size: 5rem;
 }
 
 .home-heading-wrapper > p {
@@ -210,12 +208,11 @@ progress {
 }
 
 .reward-donate-form input {
-  width: 60%;
+
   display: inline;
 }
 
 .reward-donate-form button {
-  width: 30%;
   display: inline;
   padding: 7px;
   background-color: #25CB68;

@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 const TYPES    = require('./campaign-types');
-const moment             = require('moment');
+const moment   = require('moment');
 
 
 

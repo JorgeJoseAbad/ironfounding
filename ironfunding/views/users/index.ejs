@@ -1,17 +1,21 @@
 <h2>This are our creators</h2>
 <div class="container-fluid">
-  <div class="users-row row">
-  <% users.forEach((user) => {%>
-    <div class="col-sm-3 home-campaign-box">
-      <div class="home-campaign-box-userimage">
-        <img src="<%=user.imgUrl%>">
+  <div class="row">
+    <div class="users-row">
+      <% users.forEach((user) => {%>
+      <div class="col-sm-3 home-campaign-box">
+        <div class="home-campaign-box-userimage">
+          <img src="<%=user.imgUrl%>">
+        </div>
+        <div class="listing-text">
+          <a><b>Creator name: </b>
+            <%=user.username%></a>
+          <br>
+          <q>
+            <%=user.description%></q>
+        </div>
       </div>
-      <div class="listing-text">
-        <a><b>Creator name: </b><%=user.username%></a>
-        <br>
-        <q><%=user.description%></q>
-      </div>
+      <%})%>
     </div>
-    <%})%>
   </div>
 </div>

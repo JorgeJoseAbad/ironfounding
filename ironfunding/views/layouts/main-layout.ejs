@@ -8,9 +8,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/lumen/bootstrap.min.css">
   <link rel="stylesheet" href="/stylesheets/style.css">
   <script
-src="http://code.jquery.com/jquery-3.2.1.min.js"
-integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-crossorigin="anonymous"></script>
+    src="http://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous">
+  </script>
 </head>
   <body>
     <nav class="navbar">
@@ -27,7 +28,6 @@ crossorigin="anonymous"></script>
         <div class="collapse navbar-collapse" id="home-nav">
           <ul class="nav navbar-nav">
             <li>
-              <!--<a href="/campaigns/new">Start a Project</a>-->
               <form action="/campaigns/new" method="GET">
                 <button class="btn btn-link btn-header" type="submit">Start a Project</button>
               </form>
@@ -48,13 +48,11 @@ crossorigin="anonymous"></script>
             <li>
               <form action="/login" method="GET">
                 <button class="btn btn-link btn-header" type="submit">Login</button>
-                <!--<a href="/login">Login</a>-->
               </form>
             </li>
             <li>
               <form action="/signup" method="GET">
                 <button class="btn btn-link btn-header" type="submit">Signup</button>
-                <!--<a href="/signup">Signup</a>-->
               </form>
             </li>
             <li>
@@ -63,21 +61,15 @@ crossorigin="anonymous"></script>
               </form>
             </li>
             <% if (typeof(req.user) !== "undefined") { %>
-
-
-                            <li>
-                              <div class="nav-image-profile" style="background-image:url('/<%=req.user.imgUrl%>')">
-                              </div>
-                            </li>
-                            <!--<li>
-                              <a href="/<%=req.user.username%>"><%=req.user.username%></a>
-                            </li>-->
-                            <li>
-                              <form action="/<%=req.user.username%>" method="get">
-                                <button class="btn btn-link btn-header" type="submit"><b>Hello! </b><%=req.user.username%></button>
-                                <!--<a href="#"><%=req.user.username%></a>-->
-                              </form>
-                            </li>
+                <li>
+                  <div class="nav-image-profile" style="background-image:url('/<%=req.user.imgUrl%>')">
+                  </div>
+                </li>
+                <li>
+                  <form action="/<%=req.user.username%>" method="get">
+                    <button class="btn btn-link btn-header" type="submit"><b>Hello! </b><%=req.user.username%></button>
+                  </form>
+                </li>
             <% } %>
           </ul>
         </div>

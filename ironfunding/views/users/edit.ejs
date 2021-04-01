@@ -1,29 +1,27 @@
-Edit ejs
 
 <div class="container">
   <div class="row">
     <div class="col-sm-offset-3 col-sm-6 centered-form">
-      <a><%=user.username%></a><br>
-      <a><%=user._id%></a>
-
+      <a>
+        <%=user.username%></a><br>
+      <a>
+        <%=user._id%></a>
       <form action="<%= user._id %>" method="post">
-
         <div class="form-group">
           <label for="email">Email</label>
           <input type="email" name="email" class="form-control" value="<%= user.email %>" required>
         </div>
-
         <div class="form-group">
           <label for="description">Description</label>
           <textarea name="description" class="form-control" value="<%= user.description %>" required><%= user.description %></textarea>
         </div>
-
         <button type="submit">Save Changes</button>
-        
       </form>
-
     </div>
     <% if (typeof(errorMessage) != "undefined") { %>
-      <div class="error-message"><%= errorMessage %></div>
+    <div class="error-message">
+      <%= errorMessage %>
+    </div>
     <% } %>
   </div>
+</div>
