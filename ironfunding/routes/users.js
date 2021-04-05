@@ -74,7 +74,7 @@ router.post('/upload', ensureLoggedIn('/login'), upload.single('profileImage'), 
     if (err) {
       return next(err);
     }
-    debugger;
+
     return res.redirect('/user');
   });
 
