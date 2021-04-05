@@ -9,7 +9,7 @@ const UserSchema = new Schema({
   description: String,
   imgUrl     : {
     type: String,
-    default: "https://placeholdit.imgix.net/~text?txtsize=33&txt=250%C3%97250&w=250&h=250" 
+    default: "https://theeyetravels.com/wp-content/uploads/2014/12/Beethoven-3.jpg" 
   }
 });
 

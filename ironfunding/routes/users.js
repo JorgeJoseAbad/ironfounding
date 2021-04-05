@@ -58,14 +58,23 @@ router.get('/:username', ensureLoggedIn('/login'), (req, res, next) => {
 });
 
 router.post('/upload', ensureLoggedIn('/login'), upload.single('profileImage'), (req, res) => {
-  imgUrl = "uploads/" + req.file.filename;
+
   userId = req.user._id;
+
+  let imgUrl;
+  if (req.body.photoProfileUrl != undefined && req.body.photoProfileUrl !== ""){
+      imgUrl = req.body.photoProfileUrl;
+  } else {
+      imgUrl = "/uploads/" + req.file.filename;
+  }
+
   User.findByIdAndUpdate(userId, {
     imgUrl
-  }, (err, image) => {
+  }, (err, user) => {
     if (err) {
       return next(err);
     }
+    debugger;
     return res.redirect('/user');
   });
 
