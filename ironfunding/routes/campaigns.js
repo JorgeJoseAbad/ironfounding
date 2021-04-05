@@ -20,7 +20,6 @@ const {
 
 
 router.get('/new', ensureLoggedIn('/login'), (req, res) => {
-  console.log("en router.get /new in campaings.js");
   res.render('campaigns/new', { types: TYPES, req });
 });
 
@@ -38,7 +37,6 @@ router.post('/', ensureLoggedIn('/login'), (req, res, next) => {
 
   newCampaign.save( (err) => {
         if (err) {
-          console.log(err);
           res.render('campaigns/new', { err, campaign: newCampaign, types: TYPES, req });
         } else {
           res.redirect(`/campaigns/${newCampaign._id}`);
@@ -48,8 +46,6 @@ router.post('/', ensureLoggedIn('/login'), (req, res, next) => {
 });
 
 router.get('/:id', checkOwnership, (req, res, next) => {
-  console.log("res.locals.campaignIsCurrentUsers: "+res.locals.campaignIsCurrentUsers);
-  console.log("user name: "+req.user.username);
   Campaign.findById(req.params.id, (err, campaign) => {
     if (err){ return next(err); }
 
@@ -85,7 +81,6 @@ router.post('/:id', [ensureLoggedIn('/login'),authorizeCampaign], (req, res, nex
 
 
 router.get('/:id/image',[ensureLoggedIn('/login'),authorizeCampaign],(req,res,next)=>{
-console.log("En router.get id upload");
   Campaign.findById(req.params.id, (err, campaign) => {
     if (err)       { return next(err); }
     if (!campaign) { return next(new Error("404")); }

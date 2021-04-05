@@ -9,7 +9,6 @@ const {ensureLoggedIn}        = require('connect-ensure-login');
 
 router.get('/campaigns/:id/rewards/new', authorizeCampaign, (req, res, next) => {
   Campaign.findById(req.params.id, (err, campaign) => {
-    console.log("in busqueda de rewards/new");
     res.render('rewards/new', { campaign,req });
   });
 });
@@ -38,7 +37,7 @@ router.post('/campaigns/:id/rewards', authorizeCampaign, (req, res, next) => {
       amount     : req.body.amount,
       delivery   : req.body.delivery,
       _campaign  : campaign._id,
-      
+
     });
 
     reward.save( (err) => {
@@ -49,10 +48,8 @@ router.post('/campaigns/:id/rewards', authorizeCampaign, (req, res, next) => {
       campaign.rewards.push(reward._id);
       campaign.save( (err) => {
         if (err) {
-          console.log("en campaign.save error");
           return next(err);
         } else {
-          console.log("en campaign.save redirect");
           return res.redirect(`/campaigns/${campaign._id}`);
         }
       });
@@ -61,23 +58,16 @@ router.post('/campaigns/:id/rewards', authorizeCampaign, (req, res, next) => {
 });
 
 router.post('/rewards/:id/donate', ensureLoggedIn('/login'), (req, res, next) => {
-  console.log("in rewards/id/donate");
   Reward.findById(req.params.id, (err, reward) => {
-    console.log("in reward findById");
     if (reward && !reward.biddedOnBy(req.user)){
-      console.log("in if rewards..");
       reward.bidders.push(req.user._id);
-
       reward.save( (err) => {
-        console.log("in rewards save");
         if (err){
-          console.log(err);
           res.json(err);
         } else {
           // Increment the campaign's backerCount and totalPledged
           // We have to add this function
           reward.registerWithCampaign(reward.amount, (err) => {
-            console.log("in reward.registerWithCampaign");
             if (err) { return res.json(err); }
             return res.json(reward);
 
