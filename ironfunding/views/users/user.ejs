@@ -1,28 +1,42 @@
 <section class="container">
   <div class="row">
-    <div class="col-sm-offset-2 col-sm-8 centered-form">
-      <div class="col-md-12">
-        <div class="col-md-8 profile-data">
-          <h3 class="profile-name"><%=req.user.username %></h3>
-          <p class="profile-email"><%=req.user.email %></p>
-          <i class="profile-description"><%=req.user.description %></i>
-        </div>
-        <div class="col-md-4 profile-options">
-          <div class="profile-avatar" style="background-image:url('<%=`${req.user.imgUrl}`%>')">
-          </div>
-          <form action="/upload" method="post" enctype="multipart/form-data" class="form-inline">
-            <label class="custom-file">
-              <input type="file" name="profileImage" id="upload-photo" placeholder="Choose file" class="custom-file-input">
-              <span class="custom-file-control"></span>
-            </label></br>
-            <button type="submit" value="Change it!" class="btn btn-primary btn-profile">Change your image</button>
-          </form>
-          <a class="btn btn-primary btn-profile" href="edit/<%=req.user.username %>">Edit profile</a>
-
-        </div>
-      </div>
+    <div class="col-md-12">
+      <h3 class="profile-name">
+        <%=req.user.username %>
+      </h3>
     </div>
   </div>
-  <div class="artwork-row row">
+  <div class="row">
+    <div class="col-md-4">
+      <img class="user-img" src="<%=req.user.imgUrl %>" alt="user image">
+      <div class="profile-data">
+        <p class="profile-email">
+          <%=req.user.email %>
+        </p>
+        <i class="profile-description">
+          <%=req.user.description %></i>
+      </div>
+    </div>
+    <div class="col-md-8 profile-options">
+      <div class="profile-avatar" style="background-image:url('<%=`${req.user.imgUrl}`%>')">
+      </div>
+      <form action="/upload" method="post" enctype="multipart/form-data" class="form-inline">
+        <div class="form-group">
+          <label class="custom-file" for="profileImage">Upload Photo from PC</label>
+          <input type="file" name="profileImage" id="profileImage" class="form-control" placeholder="Choose file" class="custom-file-input">
+          <span class="custom-file-control"></span>
+        </div>
+        <div class="form-group">
+          <label for="photoProfileUrl">Upload campaing image from url</label>
+          <input type="url" name="photoProfileUrl" id="photoProfileUrl" class="form-control">
+          <span class="custom-file-control"></span>
+        </div>
+        <button type="submit" value="Change it!" class="btn btn-primary btn-profile">Change your image</button>
+      </form>
+      <p>
+        <p>Change profle?</p>
+        <a class="btn btn-primary btn-profile" href="edit/<%=req.user.username %>">Edit profile</a>
+      </p>
+    </div>
   </div>
 </section>

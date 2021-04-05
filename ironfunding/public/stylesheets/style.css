@@ -54,6 +54,12 @@ nav.navbar {
   margin: 0 auto;
 }
 
+.user-img{
+  width: 300px;
+  height: auto;
+  object-fit: contain;
+}
+
 
 .btn-header {
   color: black;
@@ -249,4 +255,9 @@ progress {
   width: 60px;
   height: 60px;
   border-radius: 50%;
+}
+
+.footer{
+  position: fixed;
+  bottom: 0;
 }

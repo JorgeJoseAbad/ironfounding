@@ -1,16 +1,21 @@
-<section>
-  <h2>Upload campaign image</h2>
-  <form action="/campaigns/<%=campaign._id%>/image" method="post" enctype="multipart/form-data">
-    <div class="form-group">
-      <label for="photo" class="">Upload campaing image from your images</label>
-      <input type="file" name="photo">
-      <p class="help-block">From your images in your PC </p>
+
+  <section class="container">
+    <div class="row">
+     <div class="col-md-6">
+       <h2>Upload campaign image</h2>
+       <form action="/campaigns/<%=campaign._id%>/image" method="post" enctype="multipart/form-data">
+         <div class="form-group">
+           <label for="photo" class="custom-file">Upload campaing image from your images</label>
+           <input type="file" name="photo">
+           <p class="help-block">From your images in your PC </p>
+         </div>
+         <div class="form-group">
+           <label for="photoUrl">Upload campaing image from url</label>
+           <input type="url" name="photoUrl" id="photoUrl">
+           <p class="help-block">From a url </p>
+         </div>
+         <input type="submit" value="Save" class="btn btn-default">
+       </form>
+     </div>
     </div>
-    <div class="form-group">
-      <label  for="photoUrl">Upload campaing image from url</label>
-      <input  type="url" name="photoUrl" id="photoUrl">
-      <p class="help-block">From a url </p>
-    </div>
-    <input type="submit" value="Save" class="btn btn-default">
-  </form>
-</section>
+  </section>
