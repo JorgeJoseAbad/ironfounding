@@ -43,4 +43,8 @@ CampaignSchema.methods.belongsTo = function(user){
   return this._creator.equals(user._id);
 };
 
+CampaignSchema.methods.isFounded = function(){
+  return this.totalPledged >= this.goal;
+}
+
 module.exports = mongoose.model('Campaign', CampaignSchema);

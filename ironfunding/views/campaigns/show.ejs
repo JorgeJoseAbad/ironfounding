@@ -26,9 +26,9 @@
     </div>
 
     <div class="col-sm-4 campaign-info">
-      <% if (campaign.totalPledged >= campaign.goal){%>
-        <div class="campaign-founded">
-          Campaign is founded, congrats!!
+      <% if (campaign.isFounded()){%>
+        <div class="campaign-progress">
+          <b>Campaign is founded, congrats!!</b>
         </div>
         <% } else { %>
       <div class="campaign-progress">
