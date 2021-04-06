@@ -26,9 +26,15 @@
     </div>
 
     <div class="col-sm-4 campaign-info">
+      <% if (campaign.totalPledged >= campaign.goal){%>
+        <div class="campaign-founded">
+          Campaign is founded, congrats!!
+        </div>
+        <% } else { %>
       <div class="campaign-progress">
         <progress value="<%= campaign.totalPledged %>" max="<%= campaign.goal %>"></progress>
       </div>
+      <%}%>
       <div class="campaign-pledged">
         <span class="campaign-total">$<%= campaign.totalPledged %></span><br>
         <span class="light-text">
